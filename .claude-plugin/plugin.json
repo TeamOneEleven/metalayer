@@ -1,0 +1,14 @@
+{
+  "name": "metalayer",
+  "version": "0.1.0",
+  "description": "Self-learning context layer for LLM analytics. Your data model is markdown files with wikilinks, managed by your agent as you use it.",
+  "author": {
+    "name": "Ryan Janssen",
+    "url": "https://github.com/ryanjanssen"
+  },
+  "repository": "https://github.com/ryanjanssen/metalayer",
+  "license": "MIT",
+  "keywords": ["analytics", "semantic-layer", "data-model", "sql", "wikilinks", "obsidian"],
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json"
+}

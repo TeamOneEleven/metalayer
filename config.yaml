@@ -1,0 +1,25 @@
+# Metalayer configuration
+
+# Paths (relative to project root)
+context_path: ./context
+utils_path: ./utils
+
+
+# QMD search configuration
+qmd:
+  collections:
+    vault:
+      path: ./context
+      mask: "**/*.md"
+    queries:
+      path: ./utils/queries
+      mask: "**/*.md"
+
+# Query memory
+query_memory:
+  ring_buffer_size: 500
+
+# SQL consensus
+consensus:
+  sub_agents: 5
+  max_rounds: 3

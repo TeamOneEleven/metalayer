@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Metalayer CLI wrapper for Claude Code plugin.
+# Uses the persistent venv in CLAUDE_PLUGIN_DATA if available,
+# otherwise falls back to .venv in the current project.
+
+if [ -n "${CLAUDE_PLUGIN_DATA}" ] && [ -f "${CLAUDE_PLUGIN_DATA}/.venv/bin/metalayer" ]; then
+    exec "${CLAUDE_PLUGIN_DATA}/.venv/bin/metalayer" "$@"
+elif [ -f ".venv/bin/metalayer" ]; then
+    exec .venv/bin/metalayer "$@"
+else
+    echo "Error: metalayer not installed. Run 'metalayer init' or reinstall the plugin." >&2
+    exit 1
+fi
