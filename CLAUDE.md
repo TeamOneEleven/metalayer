@@ -76,6 +76,37 @@ metalayer log-query              # Log query + trigger learning
 metalayer frequent               # Show most-used vault objects
 ```
 
+## OneEleven Environment Setup
+
+The `oneeleven_production` source connects to a SQL Server RDS instance via an SSM tunnel through an EC2 bastion host. Scripts are in `utils/scripts/`.
+
+### AWS Credentials
+
+No credentials are stored in this repository. DB credentials are fetched at runtime from AWS Secrets Manager. You need AWS access configured:
+
+**Local development:**
+```bash
+aws configure
+# Or set environment variables:
+export AWS_ACCESS_KEY_ID=your-key
+export AWS_SECRET_ACCESS_KEY=your-secret
+export AWS_REGION=us-east-1
+```
+
+**Claude Code Cloud:**
+Set these environment variables in your Cloud session configuration:
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_REGION=us-east-1`
+
+### Verify Setup
+
+```bash
+./utils/scripts/run-query.sh "SELECT 1 AS test"
+```
+
+This will start the bastion, establish the tunnel, and run the query. The bastion shuts down automatically when idle.
+
 ## Development
 
 - Use `uv` for package management (never `pip`)

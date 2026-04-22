@@ -1,8 +1,10 @@
 #!/bin/bash
 set -e
 
-if [ -f .env ]; then
-    export $(cat .env | grep -v '^#' | xargs)
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+if [ -f "$SCRIPT_DIR/.env" ]; then
+    export $(cat "$SCRIPT_DIR/.env" | grep -v '^#' | xargs)
 fi
 
 INSTANCE_ID="${INSTANCE_ID:?INSTANCE_ID not set}"
