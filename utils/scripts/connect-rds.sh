@@ -4,6 +4,7 @@ set -e
 if [ -f .env ]; then
     export $(cat .env | grep -v '^#' | xargs)
 fi
+export AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION:-$AWS_REGION}"
 
 INSTANCE_ID="${INSTANCE_ID:?INSTANCE_ID not set}"
 RDS_ENDPOINT="${RDS_ENDPOINT:?RDS_ENDPOINT not set}"
