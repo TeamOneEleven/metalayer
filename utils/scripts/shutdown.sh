@@ -3,6 +3,7 @@
 if [ -f .env ]; then
     export $(cat .env | grep -v '^#' | xargs)
 fi
+export AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION:-$AWS_REGION}"
 
 if [ -f tunnel.pid ]; then
     echo "🛑 Stopping tunnel..."

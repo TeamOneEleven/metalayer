@@ -7,6 +7,10 @@ if [ -f "$SCRIPT_DIR/.env" ]; then
     export $(cat "$SCRIPT_DIR/.env" | grep -v '^#' | xargs)
 fi
 
+# AWS CLI v1 (pip) only reads AWS_DEFAULT_REGION; v2 reads either.
+# Normalize so both work.
+export AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION:-$AWS_REGION}"
+
 INSTANCE_ID="${INSTANCE_ID:?INSTANCE_ID not set}"
 RDS_ENDPOINT="${RDS_ENDPOINT:?RDS_ENDPOINT not set}"
 
